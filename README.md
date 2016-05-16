@@ -1,2 +1,2 @@
-This is a test of building a deployment project 
-temp opens a window with a button
+This is a test of building a deployment project based on a Qt project titled 
+temp which opens a window with a button
