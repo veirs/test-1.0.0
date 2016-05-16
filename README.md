@@ -1,2 +1,2 @@
-# test_making_deb
-I want to demo building deb from Qt project
+This is a test of building a deployment project 
+temp opens a window with a button

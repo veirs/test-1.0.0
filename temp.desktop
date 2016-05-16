@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=temp
+Exec=/usr/bin/temp
+Comment=Temp demo
+Icon=/usr/share/pixmaps/temp.ico
+StartupNotify=false
+Categories=Development;GTK;GNOME;
+Keywords=markdown;programming;
+GenericName=Temp demo
