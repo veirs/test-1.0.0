@@ -1,0 +1,15 @@
+Source: temp
+Section: demo
+Priority: optional
+Maintainer: Val Veirs <val@beamreach.org>
+Build-Depends: debhelper (>= 9), qtbase5-dev, qtbase5-dev-tools, qt5-qmake
+Standards-Version: 3.9.6
+Homepage: http://www.orcasound.net/
+
+Package: temp
+Architecture: any
+Depends: libqt5gui5, libqt5widgets5, libqt5core5a, ${misc:Depends}, ${shlibs:Depends}
+Description: temp is a demo program.
+ temp is an app based on Qt and C++.
+ It is ....... It has ...... It supports ...........
+ It is licensed under licensename. See so and so file for more information.
