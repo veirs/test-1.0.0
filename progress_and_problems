@@ -44,7 +44,7 @@ make: *** [build] Error 25
 dpkg-buildpackage: error: debian/rules build gave error exit status 2
 
 
-I checked out Bhavyanshu's GitHub project and ran the steps above and it produced the desired deb file which installed just fine on a 'clean' Ubuntu machine.  At the point where my project comes to grief, his produces the following:
+I checked out Bhavyanshu's GitHub project and ran the steps above and it produced the desired deb file in the pbuilder result folder and this deb installed lightmdeditor just fine on a 'clean' Ubuntu machine.  At the point where my project comes to grief, his produces the following:
 
 lightmdeditor project:
 
