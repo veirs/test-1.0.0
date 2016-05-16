@@ -20,7 +20,7 @@ On my development computer, I have all these github files in a folder named temp
 
 I compress this folder via right-click compress selecting .tar.gz
 
-Now I run pdebuild as follows:
+Now I run pdebuild from inside the temp_1.0.0.orig folder as follows:
 
 pdebuild --debbuildopts -sa
 
