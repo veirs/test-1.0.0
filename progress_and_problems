@@ -16,48 +16,23 @@ I installed pdebuild and ran the following:
 
 sudo pbuilder --create --mirror "http://archive.ubuntu.com/ubuntu"
 
-On my development computer, I have all these github files in a folder named temp_1.0.0.orig
+On my development computer, I have all these github files in a folder named temp-1.0.0 (note: hyphen!!!)
 
 I compress this folder via right-click compress selecting .tar.gz
 
-Now I run pdebuild from inside the temp_1.0.0.orig folder as follows:
+Now I cd to the temp-1.0.0 folder and delete the makefile and run:
+dh_make -e val@beamreach.org -f ../temp-1.0.0.tar.gz -s
+
+Then I run pdebuild from inside the temp_1.0.0 folder as follows:
 
 pdebuild --debbuildopts -sa
 
-This generates a very long list of actions and eventually fails with the following error(s):
+This builds temp_1.0.0_amd64.deb in the /home/val/pbuilder/result folder
 
-dh build 
-   dh_testdir
-   dh_auto_configure
-   dh_auto_build
-make[1]: Entering directory `/tmp/buildd/temp-1.0.0'
-cd src/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /tmp/buildd/temp-1.0.0/src/src.pro -nocache QMAKE_CFLAGS_RELEASE=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_CFLAGS_DEBUG=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_CXXFLAGS_RELEASE=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_CXXFLAGS_DEBUG=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_LFLAGS_RELEASE=-Wl,-Bsymbolic-functions\ -Wl,-z,relro QMAKE_LFLAGS_DEBUG=-Wl,-Bsymbolic-functions\ -Wl,-z,relro QMAKE_STRIP=: PREFIX=/usr -o Makefile ) && make -f Makefile 
-make[2]: Entering directory `/tmp/buildd/temp-1.0.0/src'
-/usr/local/Qt-5.2.1/bin/qmake -o Makefile temp.pro               THIS LINE DEVIATES FROM LIGHTMDEDITOR BELOW
-make[2]: /usr/local/Qt-5.2.1/bin/qmake: Command not found
-make[2]: *** [Makefile] Error 127
-make[2]: Leaving directory `/tmp/buildd/temp-1.0.0/src'
-make[1]: *** [sub-src-make_first-ordered] Error 2
-make[1]: Leaving directory `/tmp/buildd/temp-1.0.0'
-dh_auto_build: make -j1 returned exit code 2
-make: *** [build] Error 25
-dpkg-buildpackage: error: debian/rules build gave error exit status 2
+Taking this file on flash drive to 'clean' Ubuntu machine, 
+I install it by right-clicking and selecting GDebiPackageInstaller.
 
 
-I checked out Bhavyanshu's GitHub project and ran the steps above and it produced the desired deb file in the pbuilder result folder and this deb installed lightmdeditor just fine on a 'clean' Ubuntu machine.  At the point where my project comes to grief, his produces the following:
 
-lightmdeditor project:
-
-dh build 
-   dh_testdir
-   dh_auto_configure
-   dh_auto_build
-make[1]: Entering directory `/tmp/buildd/lightmdeditor-1.0.4'
-cd src/ && ( test -e Makefile || /usr/lib/x86_64-linux-gnu/qt5/bin/qmake /tmp/buildd/lightmdeditor-1.0.4/src/src.pro -nocache QMAKE_CFLAGS_RELEASE=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_CFLAGS_DEBUG=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_CXXFLAGS_RELEASE=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_CXXFLAGS_DEBUG=-g\ -O2\ -fstack-protector\ --param=ssp-buffer-size=4\ -Wformat\ -Werror=format-security\ -D_FORTIFY_SOURCE=2 QMAKE_LFLAGS_RELEASE=-Wl,-Bsymbolic-functions\ -Wl,-z,relro QMAKE_LFLAGS_DEBUG=-Wl,-Bsymbolic-functions\ -Wl,-z,relro QMAKE_STRIP=: PREFIX=/usr -o Makefile ) && make -f Makefile 
-make[2]: Entering directory `/tmp/buildd/lightmdeditor-1.0.4/src'
-/usr/lib/x86_64-linux-gnu/qt5/bin/uic mainwindow.ui -o ../build/ui/ui_mainwindow.h
-/usr/lib/x86_64-linux-gnu/qt5/bin/uic findreplace/findreplacedialog.ui -o ../build/ui/ui_findreplacedialog.h
-
-This is where I stand, today, May 16, 2016.
 
 
